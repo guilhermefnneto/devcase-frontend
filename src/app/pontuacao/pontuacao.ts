@@ -1,3 +1,6 @@
+/**
+ * Representação de negócio para a pontuação.
+ */
 export interface Pontuacao {
 
     id: number;

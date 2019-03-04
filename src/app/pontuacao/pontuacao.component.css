@@ -1,0 +1,14 @@
+table {
+    width: 80%;
+    margin-top: 40px;
+    margin-left: 10%;
+}
+
+table thead {
+    background: lightcyan;
+    font-weight: bold;
+}
+
+.button-table {
+    background: white;
+}
