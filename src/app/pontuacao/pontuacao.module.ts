@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { HomeModule } from '../home/home.module';
 
 @NgModule({
     declarations: [
@@ -13,7 +15,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
         BrowserModule,
         CommonModule,
         ReactiveFormsModule,
-        NgbModule
+        NgbModule,
+        RouterModule,
+        HomeModule
     ],
     exports: [
         PontuacaoComponent

@@ -1,7 +1,8 @@
 <!-- Gerenciamento da Pontuação -->
 
-<h3 style="text-align: center; color: gray">{{title}}</h3>
+<dev-home></dev-home>
 
+<h3 style="text-align: center; color: gray">{{title}}</h3>
 
 <!-- Grid com as pontuações cadastradas -->
 
@@ -19,9 +20,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let pontuacao of pontuacoes">
-                <td style="text-align: right">{{pontuacao.valorInicial | number:2}}</td>
-                <td style="text-align: right">{{pontuacao.valorFinal | number:2}}</td>
-                <td style="text-align: right">{{pontuacao.pontos | number:0}}</td>
+                <td style="text-align: right">{{pontuacao.valorInicial}}</td>
+                <td style="text-align: right">{{pontuacao.valorFinal}}</td>
+                <td style="text-align: right">{{pontuacao.pontos | number: 0}}</td>
                 <td class="button-table">
                     <div style="display: inline; margin-right: 5px;"><a (click)="editar(pontuacaoFormModal, pontuacao)" title="Editar"><i class="fa fa-pencil" style="cursor: pointer"></i></a></div>
                     <div style="display: inline; margin-right: 5px;"><a (click)="remover(dialogRemove, pontuacao)" title="Remover"><i class="fa fa-trash" style="cursor: pointer"></i></a></div>

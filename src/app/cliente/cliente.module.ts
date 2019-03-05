@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from '../home/home.component';
+import { HomeModule } from '../home/home.module';
 
 
 @NgModule({
@@ -14,7 +17,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
         BrowserModule,
         CommonModule,
         ReactiveFormsModule,
-        NgbModule
+        NgbModule,
+        RouterModule,
+        HomeModule
     ],
     exports: [
         ClienteComponent
