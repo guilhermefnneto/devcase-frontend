@@ -1,0 +1,123 @@
+<!-- Gerenciamento do Cliente -->
+
+<h3 style="text-align: center; color: gray">{{title}}</h3>
+
+
+<!-- Grid com os clientes cadastrados -->
+
+<div class="center">
+    <table class="table table-bordered table-hover table-sm">
+        <thead>
+            <tr>
+                <td style="text-align: center; width: 25%">Nome</td>
+                <td style="text-align: center; width: 10%">Data de Nascimento</td>
+                <td style="text-align: center; width: 10%">Sexo</td>
+                <td style="text-align: center; width: 10%">Estado Civil</td>
+                <td style="text-align: center; width: 10%">Telefone Residencial</td>
+                <td style="text-align: center; width: 10%">Telefone Celular</td>
+                <td style="text-align: center; width: 10%">Email</td>
+                <td style="text-align: center; width: 10%">Pontos</td>
+                <td style="text-align: center; width: 5%" class="button-table">
+                    <div style="display: inline; margin-right: 5px"><a (click)="novo(clienteFormModal)" title="Novo"><i class="fa fa-plus" style="cursor: pointer"></i></a></div>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clientes">
+                <td style="text-align: left">{{cliente.nome}}</td>
+                <td style="text-align: center">{{cliente.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+                <td style="text-align: left">{{cliente.sexo}}</td>
+                <td style="text-align: left">{{cliente.estadoCivil}}</td>
+                <td style="text-align: right">{{cliente.telefoneResidencial}}</td>
+                <td style="text-align: right">{{cliente.telefoneCelular}}</td>
+                <td style="text-align: left">{{cliente.email}}</td>
+                <td style="text-align: right">{{cliente.pontos}}</td>
+                <td class="button-table">
+                    <div style="display: inline; margin-right: 5px;"><a (click)="editar(clienteFormModal, cliente)" title="Editar"><i class="fa fa-pencil" style="cursor: pointer"></i></a></div>
+                    <div style="display: inline; margin-right: 5px;"><a (click)="remover(dialogRemove, cliente)" title="Remover"><i class="fa fa-trash" style="cursor: pointer"></i></a></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Formulário para o gerenciamento dos clientes -->
+
+<ng-template #clienteFormModal let-modal let-c="close">
+
+    <div class="modal-header">
+        <h4 class="modal-title">Cliente</h4>
+        <button type="button" class="close" (click)="c()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+        <form [formGroup]="clienteFormGroup">
+            <input formControleName="id" hidden #id type="number">
+            <div class="form-group m-2">
+                <label class="col-2">Nome</label>
+                <input formControlName="nome" class="col-10" #nomeInput autofocus>
+            </div>
+            <div class="form-group m-2">
+                <label class="col-2">Data Nascimento</label>
+                <input formControlName="dataNascimento" class="col-10" #dataNascimentoInput type="date">
+            </div>
+            <div class="form-group m-2">
+                <label class="col-2">Sexo</label>
+                <input formControlName="sexo" class="col-10" #sexo>
+            </div>
+            <div class="form-group m-2">
+                <label class="col-2">Estado Civil</label>
+                <input formControlName="estadoCivil" class="col-10" #estadoCivil>
+            </div>
+            <div class="form-group m-2">
+                <label class="col-2">Telefone Residencial</label>
+                <input formControlName="telefoneResidencial" class="col-10" #telefoneResidencial type="number" style="text-align: right">
+            </div>
+            <div class="form-group m-2">
+                <label class="col-2">Telefone Celular</label>
+                <input formControlName="telefoneCelular" class="col-10" #telefoneCelular type="number" style="text-align: right">
+            </div>
+            <div class="form-group m-2">
+                <label class="col-2">Email</label>
+                <input formControlName="email" class="col-10" #email>
+            </div>
+            <div class="form-group m-2">
+                <label class="col-2">Pontos</label>
+                <input formControlName="pontos" class="col-10" #pontos type="number" style="text-align: right" disabled>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="gravar()">Gravar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c()">Fechar</button>
+    </div>
+
+</ng-template>
+
+
+<!-- Dialog para remoção do cliente -->
+<ng-template #dialogRemove let-modal let-c="close">
+    <div class="modal-header">
+        <h4 class="modal-title">Cliente</h4>
+        <button type="button" class="close" (click)="c()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+        Remover o cliente?
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c();delete(cliente)">Sim</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c()">Não</button>
+    </div>
+</ng-template>
+
+
+<!-- Alertas das operações -->
+
+<div id="alerts">
+    <div class="alert alert-success fixed-top" style="width: 110px;" *ngIf="alert.code=='success'">Sucesso</div>
+    <div class="alert alert-danger fixed-top" style="width: 110px;" *ngIf="alert.code=='error'">Erro</div>
+</div>

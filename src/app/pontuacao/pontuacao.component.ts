@@ -41,7 +41,7 @@ export class PontuacaoComponent implements OnInit {
      * Todas as pontuações cadastradas serão exibidas ao usuário.
      */
     ngOnInit() {
-        this.loadPontuacao();
+        this.loadPontuacoes();
 
         this.pontuacaoFormGroup= this.formBuilder.group({
             id: [''],
@@ -54,12 +54,12 @@ export class PontuacaoComponent implements OnInit {
     /**
      * Solicita o serviço para buscar todas as pontuações cadastradas mostrando-as em seguida ao usuário.
      */
-    loadPontuacao(): void {
+    loadPontuacoes(): void {
         this.pontuacaoService.readAll()
             .subscribe(
-                pontuacoes => this.pontuacoes = <Pontuacao[]> pontuacoes,
-                err => {
-                    console.log('Erro: ' + err.message);
+                pontuacoes => this.pontuacoes = <Pontuacao[]> pontuacoes
+                , err => {
+                    this.notice('error');
                 }
             );
     }
@@ -68,7 +68,7 @@ export class PontuacaoComponent implements OnInit {
      * Atualiza as informações para o usuário, após qualquer atualização de dados.
      */
     refresh(): void {
-        this.loadPontuacao();
+        this.loadPontuacoes();
     }
 
     /**
@@ -87,17 +87,17 @@ export class PontuacaoComponent implements OnInit {
     private loadForm(pontuacao: Pontuacao): void {
         if (pontuacao) {
             this.pontuacaoFormGroup.setValue({
-                id: pontuacao.id,
-                valorInicial: pontuacao.valorInicial,
-                valorFinal: pontuacao.valorFinal,
-                pontos: pontuacao.pontos
+                id            : pontuacao.id,
+                valorInicial  : pontuacao.valorInicial,
+                valorFinal    : pontuacao.valorFinal,
+                pontos        : pontuacao.pontos
             });
         } else {
             this.pontuacaoFormGroup.setValue({
-                id: '',
-                valorInicial: '',
-                valorFinal: '',
-                pontos: ''
+                id            : '',
+                valorInicial  : '',
+                valorFinal    : '',
+                pontos        : ''
             });
         }
     }

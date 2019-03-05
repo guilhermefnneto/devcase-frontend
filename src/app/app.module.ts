@@ -6,6 +6,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { PontuacaoModule } from './pontuacao/pontuacao.module';
+import { ClienteModule } from './cliente/cliente.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PontuacaoModule } from './pontuacao/pontuacao.module';
     CommonModule,
     HttpClientModule,
     AngularFontAwesomeModule,
-    PontuacaoModule
+    PontuacaoModule,
+    ClienteModule
   ],
   providers: [
     
